@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  samba-ad:
+    image: nowsci/samba-domain
+    container_name: samba-ad-dc
+    hostname: dc1
+    network_mode: host
+    environment:
+      - DOMAIN=${DOMAIN:-EXAMPLE.COM}
+      - DNSFORWARDER=${DNSFORWARDER:-8.8.8.8}
+      - HOSTIP=${HOSTIP:-127.0.0.1}
+    secrets:
+      - domain_password
+    volumes:
+      - samba-data:/var/lib/samba
+      - samba-config:/etc/samba/external
+    cap_add:
+      - SYS_ADMIN
+    privileged: true
+    restart: unless-stopped
+
+volumes:
+  samba-data:
+  samba-config:
+
+secrets:
+  domain_password:
+    file: ./secrets/domain_password.txt
