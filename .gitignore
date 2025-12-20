@@ -1,0 +1,38 @@
+# Environment files
+.env
+
+# Secret files
+secrets/*.txt
+!secrets/*.example
+
+# Go build artifacts
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+
+# Go workspace files
+go.work
+go.work.sum
+
+# IDE specific files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Docker volumes (if using local bind mounts)
+/data/
+/logs/
+
+# Backup files
+*.bak
+*.backup
