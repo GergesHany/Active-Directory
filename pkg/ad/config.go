@@ -7,4 +7,5 @@ type Config struct {
 	BaseDN   string // The base distinguished name for searches
 	Username string
 	Password string
+	UseTLS   bool // Whether to use StartTLS (set to false for development)
 }
